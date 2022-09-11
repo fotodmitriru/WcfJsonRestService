@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using WcfJsonRestService.Entities.Enums;
@@ -23,8 +25,30 @@ namespace WcfJsonRestService.Entities
             set => CurrencyType = (CurrencyTypeEnun) Enum.Parse(typeof(CurrencyTypeEnun), value);
         }
 
-        [DataMember(Name = "nationalities")]
+        //[DataMember(Name = "nationalities")]
         //[JsonConverter(typeof(JsonStringEnumConverter))]
         public NationalityTypeEnum[] Nationalities { get; set; }
+
+        [DataMember(Name = "nationalities")]
+        public string[] NationalitiesStrings
+        {
+            get
+            {
+                List<string> result = new List<string>();
+                if (Nationalities == null)
+                    return null;
+
+                foreach (NationalityTypeEnum nationality in Nationalities)
+                {
+                    result.Add(nationality.ToString());
+                }
+
+                return result.ToArray();
+                /*return Nationalities.GetType().GetEnumValues()
+                    .Cast<string>()
+                    .Select(x => x.ToString())
+                    .ToArray();*/
+            }
+        }
     }
 }

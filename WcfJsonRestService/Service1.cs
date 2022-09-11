@@ -55,7 +55,36 @@ namespace WcfJsonRestService
             {
                 Id = Convert.ToInt32(id),
                 Name = "Moskvich",
-                Persons = new Person[]
+                Persons = new[]
+                {
+                    new Person
+                    {
+                        Id = 1,
+                        Name = "Leo Binasi",
+                        CurrencyType = CurrencyTypeEnun.MDL,
+                        Nationalities = new[] {NationalityTypeEnum.KZ, NationalityTypeEnum.RUS}
+                    },
+                    new Person
+                    {
+                        Id = 20,
+                        Name = "Hrenase",
+                        CurrencyType = CurrencyTypeEnun.RUP,
+                        Nationalities = new[] {NationalityTypeEnum.RUS, NationalityTypeEnum.MDL}
+                    }
+                }
+            };
+        }
+
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "data/organization2/{id}")]
+        public string GetOrganizationString(string id)
+        {
+            var org = new Organization
+            {
+                Id = Convert.ToInt32(id),
+                Name = "Moskvich",
+                Persons = new[]
                 {
                     new Person
                     {
@@ -71,34 +100,6 @@ namespace WcfJsonRestService
                         CurrencyType = CurrencyTypeEnun.RUP
                     }
                 }
-            };
-        }
-
-        [WebInvoke(Method = "GET",
-            ResponseFormat = WebMessageFormat.Json,
-            UriTemplate = "data/organization2/{id}")]
-        public string GetOrganizationString(string id)
-        {
-            var org = new Organization
-            {
-                Id = Convert.ToInt32(id),
-                Name = "Moskvich",
-                /*Persons = new Person[]
-                {
-                    new Person
-                    {
-                        Id = 1,
-                        Name = "Leo Binasi",
-                        CurrencyType = CurrencyTypeEnun.MDL,
-                        //Nationalities = new[] {NationalityTypeEnum.KZ, NationalityTypeEnum.RUS}
-                    },
-                    new Person
-                    {
-                        Id = 20,
-                        Name = "Hrenase",
-                        CurrencyType = CurrencyTypeEnun.RUP
-                    }
-                }*/
             };
 
             return org.SerializeToJson2();
