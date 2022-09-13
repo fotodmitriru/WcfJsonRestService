@@ -32,23 +32,9 @@ namespace WcfJsonRestService.Entities
         [DataMember(Name = "nationalities")]
         public string[] NationalitiesStrings
         {
-            get
-            {
-                List<string> result = new List<string>();
-                if (Nationalities == null)
-                    return null;
-
-                foreach (NationalityTypeEnum nationality in Nationalities)
-                {
-                    result.Add(nationality.ToString());
-                }
-
-                return result.ToArray();
-                /*return Nationalities.GetType().GetEnumValues()
-                    .Cast<string>()
-                    .Select(x => x.ToString())
-                    .ToArray();*/
-            }
+            get => Nationalities?.Select(nationality => nationality.ToString()).ToArray();
+            set => Nationalities = value.Select(nationality =>
+                Enum.Parse(typeof(NationalityTypeEnum), nationality)).Cast<NationalityTypeEnum>().ToArray();
         }
     }
 }
