@@ -20,7 +20,7 @@ namespace WcfJsonRestService
             {
                 Id = Convert.ToInt32(id),
                 Name = "Leo Messi",
-                CurrencyType = CurrencyTypeEnun.MDL
+                CurrencyType = CurrencyTypeEnun.Mdl
             };
         }
 
@@ -35,13 +35,13 @@ namespace WcfJsonRestService
                 {
                     Id = 1,
                     Name = "Leo Binasi",
-                    CurrencyType = CurrencyTypeEnun.MDL
+                    CurrencyType = CurrencyTypeEnun.Mdl
                 },
                 new Person
                 {
                     Id = 20,
                     Name = "Hrenase",
-                    CurrencyType = CurrencyTypeEnun.RUP
+                    CurrencyType = CurrencyTypeEnun.Rup
                 }
             };
         }
@@ -61,17 +61,18 @@ namespace WcfJsonRestService
                     {
                         Id = 1,
                         Name = "Leo Binasi",
-                        CurrencyType = CurrencyTypeEnun.MDL,
-                        Nationalities = new[] {NationalityTypeEnum.KZ, NationalityTypeEnum.RUS}
+                        CurrencyType = CurrencyTypeEnun.Mdl,
+                        Nationalities = new[] {NationalityTypeEnum.Kz, NationalityTypeEnum.Rus}
                     },
                     new Person
                     {
                         Id = 20,
                         Name = "Hrenase",
-                        CurrencyType = CurrencyTypeEnun.RUP,
-                        Nationalities = new[] {NationalityTypeEnum.RUS, NationalityTypeEnum.MDL}
+                        CurrencyType = CurrencyTypeEnun.Rup,
+                        Nationalities = new[] {NationalityTypeEnum.Rus, NationalityTypeEnum.Mdl}
                     }
-                }
+                },
+                DateTimeNow = DateTime.Now
             };
         }
 
@@ -90,14 +91,14 @@ namespace WcfJsonRestService
                     {
                         Id = 1,
                         Name = "Leo Binasi",
-                        CurrencyType = CurrencyTypeEnun.MDL,
-                        Nationalities = new[] {NationalityTypeEnum.KZ, NationalityTypeEnum.RUS}
+                        CurrencyType = CurrencyTypeEnun.Mdl,
+                        Nationalities = new[] {NationalityTypeEnum.Kz, NationalityTypeEnum.Rus}
                     },
                     new Person
                     {
                         Id = 20,
                         Name = "Hrenase",
-                        CurrencyType = CurrencyTypeEnun.RUP
+                        //CurrencyType = CurrencyTypeEnun.RUP
                     }
                 }
             };

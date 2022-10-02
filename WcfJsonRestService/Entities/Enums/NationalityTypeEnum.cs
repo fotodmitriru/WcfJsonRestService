@@ -5,8 +5,13 @@ namespace WcfJsonRestService.Entities.Enums
     [DataContract]
     public enum NationalityTypeEnum
     {
-        RUS,
-        MDL,
-        KZ
+        [EnumMember(Value = "RUS")]
+        Rus,
+
+        [EnumMember(Value = "MDL")]
+        Mdl,
+
+        [EnumMember(Value = "KZ")]
+        Kz
     }
 }

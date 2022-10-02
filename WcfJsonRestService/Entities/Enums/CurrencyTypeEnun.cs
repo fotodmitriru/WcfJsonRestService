@@ -5,8 +5,13 @@ namespace WcfJsonRestService.Entities.Enums
     [DataContract]
     public enum CurrencyTypeEnun
     {
-        RUB,
-        RUP,
-        MDL
+        [EnumMember(Value = "RUB")]
+        Rub,
+
+        [EnumMember(Value = "RUP")]
+        Rup,
+        
+        [EnumMember(Value = "MDL")]
+        Mdl
     }
 }

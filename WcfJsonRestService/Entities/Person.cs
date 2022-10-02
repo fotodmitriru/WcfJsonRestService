@@ -16,25 +16,26 @@ namespace WcfJsonRestService.Entities
         [DataMember(Name = "name")]
         public string Name { get; set; }
 
+        [DataMember(Name = "currencyType")]
         public CurrencyTypeEnun CurrencyType { get; set; }
 
-        [DataMember(Name = "currencyType")]
+        /*[DataMember(Name = "currencyType")]
         public string CurrencyTypeString
         {
             get => CurrencyType.ToString();
             set => CurrencyType = (CurrencyTypeEnun) Enum.Parse(typeof(CurrencyTypeEnun), value);
-        }
-
-        //[DataMember(Name = "nationalities")]
-        //[JsonConverter(typeof(JsonStringEnumConverter))]
-        public NationalityTypeEnum[] Nationalities { get; set; }
+        }*/
 
         [DataMember(Name = "nationalities")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NationalityTypeEnum[] Nationalities { get; set; }
+
+        /*[DataMember(Name = "nationalities")]
         public string[] NationalitiesStrings
         {
             get => Nationalities?.Select(nationality => nationality.ToString()).ToArray();
             set => Nationalities = value.Select(nationality =>
                 Enum.Parse(typeof(NationalityTypeEnum), nationality)).Cast<NationalityTypeEnum>().ToArray();
-        }
+        }*/
     }
 }

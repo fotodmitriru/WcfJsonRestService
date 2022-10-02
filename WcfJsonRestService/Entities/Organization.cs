@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
+using WcfJsonRestService.Attributes;
 
 namespace WcfJsonRestService.Entities
 {
@@ -13,5 +15,15 @@ namespace WcfJsonRestService.Entities
 
         [DataMember(Name = "persons")]
         public Person[] Persons { get; set; }
+
+        [DataMember(Name = "currentDateTime")]
+        public DateTime DateTimeNow { get; set; }
+
+        
+        public string DateTimeNowString
+        {
+            get => DateTimeNow.ToString("yyyy-MM-ddTHH:mm:ssz");
+            set => DateTimeNow = DateTime.Parse(value);
+        }
     }
 }

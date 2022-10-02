@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text.Json;
 
 namespace WcfJsonRestService
@@ -33,6 +34,13 @@ namespace WcfJsonRestService
 
             return JsonSerializer.Deserialize<T>(strJson);
         }
+
+        public static string GetEnumDescription<TEnum>(this TEnum item)
+            => item.GetType()
+                   .GetField(item.ToString())
+                   .GetCustomAttributes(typeof(EnumMemberAttribute), false)
+                   .Cast<EnumMemberAttribute>()
+                   .FirstOrDefault()?.Value ?? string.Empty;
 
         /*public static string[] GetValues<T[]>(this T[] thisEnum) =>Enum.GetValues(thisEnum)
         .Cast<int>()
